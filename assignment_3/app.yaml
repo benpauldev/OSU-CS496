@@ -1,0 +1,17 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /style\.css
+  static_files: style.css
+  upload: style\.css
+- url: /.*
+  script: oauth.app
+
+libraries:
+  - name: jinja2
+    version: latest
+  - name: ssl
+    version: latest
+

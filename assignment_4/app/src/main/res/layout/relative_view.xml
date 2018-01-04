@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relative_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.benjaminfondell.androidui.RelativeViewActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/num1"
+        android:id="@+id/number1"
+        android:layout_margin="5dp"
+        android:textSize="100sp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorTextPrimaryLight" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/number1"
+        android:gravity="center"
+        android:text="@string/num2"
+        android:id="@+id/number2"
+        android:layout_margin="5dp"
+        android:textSize="100sp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorTextPrimaryLight" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/number2"
+        android:gravity="center"
+        android:text="@string/num3"
+        android:id="@+id/number3"
+        android:layout_margin="5dp"
+        android:textSize="100sp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorTextPrimaryLight" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/number1"
+        android:gravity="center"
+        android:text="@string/num4"
+        android:id="@+id/number4"
+        android:layout_margin="5dp"
+        android:textSize="100sp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorTextPrimaryLight" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/number4"
+        android:gravity="center"
+        android:text="@string/num5"
+        android:id="@+id/number5"
+        android:layout_margin="5dp"
+        android:textSize="100sp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorTextPrimaryLight" />
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.benjaminfondell.finalproject.MainActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/editTextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:textSize="35dp"
+        android:background="#DAF7A6"
+        android:textColorHint="#4A06A3"
+        android:fontFamily="courier"
+        android:textColor="#4A06A3"/>
+
+
+    <EditText
+        android:id="@+id/editTextContents"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:gravity="center_vertical|top"
+        android:background="#DAF7A6"
+        android:fontFamily="courier"
+        android:textColorHint="#4A06A3"
+        android:textColor="#4A06A3"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#DAF7A6">
+
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="345dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:text="@string/editor_save"
+            android:background="@drawable/buttonshape"
+            android:textStyle="bold"
+            android:fontFamily="courier"
+            android:textColor="#FFFFFF"
+            android:textSize="28dp"
+            />
+
+        <ImageButton
+            android:id="@+id/camera_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="#DAF7A6"
+            android:maxHeight="80dp"
+            android:maxWidth="80dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cameraicon"
+            android:layout_toRightOf="@+id/buttonSave" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
+
+
+

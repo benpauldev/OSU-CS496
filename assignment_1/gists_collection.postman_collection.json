@@ -1,0 +1,540 @@
+{
+	"variables": [],
+	"info": {
+		"name": "gists_collection",
+		"_postman_id": "721cf3d0-101b-3040-f9a0-c8dd55607561",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get 30 Gists.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"30 public Gists Returned.\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/public",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Getting public Gists returns 30 Gists"
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm 30 gists returned.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"gistCount\", jsonData.length);",
+							"",
+							"tests[\"Gists counted for benpauldev\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/public",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Check wolford public gists.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"wolfordj has atleast 1 public gist\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url2}}/users/wolfordj/gists",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Confirm that the user `wolfordj` has at least one public Gist"
+			},
+			"response": []
+		},
+		{
+			"name": "Counted benpauldev gists. ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"gistCount\", jsonData.length);",
+							"",
+							"if(globals.gistCount > 0){",
+							"    postman.setGlobalVariable(\"prevGistCount\", jsonData.length - 1);",
+							"}",
+							"",
+							"tests[\"Gists counted for benpauldev\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url2}}/gists",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3516453639f21317d8edf128e5a976f06ac935f8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"the description for this gist\",\n  \"public\": true,\n  \"files\": {\n    \"file1.txt\": {\n      \"content\": \"String file contents\"\n    }\n  }\n}"
+				},
+				"description": "Counted benpauldev gists. "
+			},
+			"response": []
+		},
+		{
+			"name": "Create new benpauldev gist.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Created gist in benpauldev\"] = responseCode.code === 201;",
+							"globals.gistCount",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"gistID\", jsonData.id);",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url2}}/gists",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3516453639f21317d8edf128e5a976f06ac935f8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"the description for this gist\",\n  \"public\": true,\n  \"files\": {\n    \"file1.txt\": {\n      \"content\": \"String file contents\"\n    }\n  }\n}"
+				},
+				"description": "Add gist to benpauld dev"
+			},
+			"response": []
+		},
+		{
+			"name": "Gist list was incremented by 1. ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"tests[\"Gist was successfully incremented\"] = (globals.gistCount > globals.prevGistCount);",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url2}}/gists",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3516453639f21317d8edf128e5a976f06ac935f8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"the description for this gist\",\n  \"public\": true,\n  \"files\": {\n    \"file1.txt\": {\n      \"content\": \"String file contents\"\n    }\n  }\n}"
+				},
+				"description": "Gist list was incremented by 1. "
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm correct gist contents.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Contents of created gist matches sent contents.\"] = responseBody.has(\"file1.txt\");",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url2}}/gists",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3516453639f21317d8edf128e5a976f06ac935f8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"the description for this gist\",\n  \"public\": true,\n  \"files\": {\n    \"file1.txt\": {\n      \"content\": \"String file contents\"\n    }\n  }\n}"
+				},
+				"description": "Confirm that the contents of the Gist you created match the contents you sent"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit gist.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Patch edit second gist text file to new_file_name.txt.\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url2}}/gists/{{gistID}}",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3516453639f21317d8edf128e5a976f06ac935f8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"the description for this gist\",\n  \"public\": true,\n  \"files\": {\n    \"new_file_name.txt\": {\n      \"content\": \"String file contents\"\n    }\n  }\n}"
+				},
+				"description": "Change file name of text file in gist with PATCH"
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm successful edit.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Confirm patch was succesful.\"] = responseBody.has(\"new_file_name.txt\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url2}}/gists",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3516453639f21317d8edf128e5a976f06ac935f8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"the description for this gist\",\n  \"public\": true,\n  \"files\": {\n    \"file1.txt\": {\n      \"content\": \"String file contents\"\n    }\n  }\n}"
+				},
+				"description": "Confirm that the patch edit was successful"
+			},
+			"response": []
+		},
+		{
+			"name": "Star gist.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Star a gist was successful.\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url2}}/gists/{{gistID}}/star",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3516453639f21317d8edf128e5a976f06ac935f8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Star a gist was successful."
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm gist is starred.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Gist is starred.\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url2}}/gists/{{gistID}}/star",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3516453639f21317d8edf128e5a976f06ac935f8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Gist is starred."
+			},
+			"response": []
+		},
+		{
+			"name": "Remove star.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Unstar gist.\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url2}}/gists/{{gistID}}/star",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3516453639f21317d8edf128e5a976f06ac935f8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Unstar gist."
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm star was removed.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Confirm star has been removed.\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url2}}/gists/{{gistID}}/star",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3516453639f21317d8edf128e5a976f06ac935f8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Confirm star has been removed."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete gist.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Delete gist.\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url2}}/gists/{{gistID}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3516453639f21317d8edf128e5a976f06ac935f8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Delete gist."
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm gist was deleted.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Confirm gist has been deleted.\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url2}}/gists/{{gistID}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 3516453639f21317d8edf128e5a976f06ac935f8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Confirm gist has been deleted. "
+			},
+			"response": []
+		}
+	]
+}

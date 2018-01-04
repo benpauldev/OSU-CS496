@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AndroidUI</string>
+    <string name="main_link_1">Horizontal View </string>
+    <string name="main_link_2">Vertical View </string>
+    <string name="main_link_3">Grid View </string>
+    <string name="main_link_4">Relative View </string>
+    <string name="num1">1</string>
+    <string name="num2">2</string>
+    <string name="num3">3</string>
+    <string name="num4">4</string>
+    <string name="num5">5</string>
+</resources>
