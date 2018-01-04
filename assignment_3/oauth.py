@@ -7,8 +7,8 @@ import google.appengine.api.urlfetch as urlfetch
 from google.appengine.ext.webapp import template
 
 
-CLIENT_ID = "749340556214-kls172diojat7hibo15de7jb2rr1g5fr.apps.googleusercontent.com"
-CLIENT_SECRET = "jXrsMQG5Vghxjexr44WvnBKZ"
+CLIENT_ID = //client id
+CLIENT_SECRET = //client secret
 GOOGLE_URL = "https://accounts.google.com/o/oauth2/v2/auth"
 GPLUS_URL = "https://www.googleapis.com/plus/v1/people/me"
 REDIRECT_URI = "https://oauth-app-183500.appspot.com/oauth"
